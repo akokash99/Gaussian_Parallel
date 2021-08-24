@@ -25,6 +25,26 @@ For this parallel strategy, each thread calls the computeGauss function and simi
 
 As for synchronization, I used the barrier. At the barrier, each thread waits until all the others arrive. Barriers were used to take care of the dependencies between selecting the pivot and factoring the rest of the matrix. And also the dependencies between factoring the rest of the matrix, and the selection of the pivot in the next timestamp. To make sure that the number of the threads who finished executing the bigger for loop aren’t waited on, I have created two atomic variables reached and left which keep track of such threads. 
 
+## Results
+
+x-axis: Matrix size
+
+y-axis: Time(s)
+
+
+![image](https://user-images.githubusercontent.com/77176446/130703496-82a1428b-90f3-47b4-845b-bc31785976ba.png)
+
+
+![image](https://user-images.githubusercontent.com/77176446/130703549-a877e1ac-74bb-4e8e-8f9a-6e8c5fb8ba7c.png)
+
+
+![image](https://user-images.githubusercontent.com/77176446/130703637-92945f34-d805-4056-9ce0-8b1d91430be8.png)
+
+
+
+## Conclusion
+
+Both parallel versions present significant gain in performance when compared to the sequential version. When comparing both versions together, we can see that the first one that allows more opportunities of exploiting spatial locality across different threads performs significantly better.
 
 ## Author of sequential version
 Original author of the sequential version is unknown. Code was modified by Kay Shen in January 2010.
